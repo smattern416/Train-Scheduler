@@ -11,4 +11,31 @@ $(document).ready(function(){
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
+
+
+      var database = firebase.database();
+
+  //  Button Click
+  $("#addTrain").on("click", function (event) {
+    event.preventDefault();
+
+   
+    var trainName = $("#trainName").val().trim();
+    var destination = $("#destination").val().trim();
+    var firstTrain = $("#firstTrain").val().trim();
+    var freq = $("#interval").val().trim();
+
+// pushing the data entered
+
+database.ref().push({
+    trainName: trainName,
+    destination: destination,
+    firstTrain: firstTrain,
+    frequency: freq
+  });
+});
+
+
+
+
 })
